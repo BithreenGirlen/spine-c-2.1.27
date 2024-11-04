@@ -3,17 +3,23 @@ Binary skeleton reader written in C for spine 2.1.27 runtime.
 The files are intended to be used with spine-c runtime in official's [2.1.25](https://github.com/EsotericSoftware/spine-runtimes/tree/2.1.25) tag.
 
 The repository contains: 
-- `SkeletonBinary.c`, `SkeltonBinary.h`
+- `SkeletonBinary.c`
+  - Binary skeleton reader utilising macro defined in `Array.h` and `extension.h`.
   - The code is based on `SkeletonBinary.cs` in 2.1.25
-- `Array.c`, `Array.h`
-  - C vector backported from spine-c 4.1.  
-- `extension.c`, `extension.h`
+- `Array.c`
+  - C vector backported from spine-c 4.1.
+  - `dll.h` is necessary to be consistent with declaration rule of the later version. 
+- `extension.c`
   - Some external functions which lack `sp` prefix have been renamed so as to be consistent with spine-c 3.6 and later.
-  - `MAX`, `MIN` have been added for C vector and `UNUSED` has been added for `_spReadFile()`.
+  - `MAX`, `MIN` have been added for C vector, and `UNUSED` has been added for `_spReadFile()`.
 
-Not being sure how many bug fixes are to be ported on other runtime files, they are excluded here.
+Plus, the files which are to be overwritten to those of 2.1.25 tag are contained.
+- `spine.h`
+  - A line `#include <spine/SkeletonBinary.h>` is added.
+- `Bone.c`
+  - Fix on matrix initialisation is backported.
 
-## Note on backport on other files
+## Note on backport
 
 ### `Bone.c`
 
